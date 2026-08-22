@@ -202,4 +202,18 @@ function setupCartUI() {
   renderCartUI();
 }
 
-document.addEventListener("DOMContentLoaded", setupCartUI);
+// Botones sueltos "Pedir por WhatsApp" (header, footer, botón flotante) — no pasan por el carrito.
+function setupWhatsAppLinks() {
+  document.querySelectorAll(".whatsapp-cta").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const message = link.dataset.whatsappMessage;
+      window.open(buildWhatsAppLink(message), "_blank", "noopener");
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupCartUI();
+  setupWhatsAppLinks();
+});
