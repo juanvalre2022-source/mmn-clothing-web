@@ -5,7 +5,7 @@
 // 1) Número de WhatsApp Business (SOLO NÚMEROS, con indicativo de país, sin +, sin espacios).
 //    Ejemplo Colombia: "573001234567"
 //    ⚠️ Este es un número de EJEMPLO. Reemplázalo apenas tengas el definitivo.
-const WHATSAPP_NUMBER = "573000000000";
+const WHATSAPP_NUMBER = "573115342412";
 
 // 2) Catálogo de productos. Duplica un bloque {} para agregar un producto nuevo.
 //    - id: identificador único, sin espacios (ej: "cam-06")
