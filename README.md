@@ -1,13 +1,23 @@
 # MMN Clothing — Landing Page
 
-Landing page de catálogo para MMN Clothing (camisetas y busos estampados), con pedidos por WhatsApp.
+Landing page para MMN Clothing (camisetas, busos y pantalonetas estampadas), con
+catálogo completo, carrito de compras y pedidos por WhatsApp.
+
+## Estructura
+
+- `index.html` — página principal (hero, slider de destacados, vista previa por categoría).
+- `catalogo.html` — catálogo completo con pestañas por categoría.
+- `js/products.js` — configuración: número de WhatsApp y catálogo de productos.
+- `js/cart.js` — lógica del carrito de compras y envío del pedido por WhatsApp.
+- `js/main.js` — lógica de la página principal (slider, vistas previas).
+- `js/catalog.js` — lógica de la página de catálogo (pestañas, resaltado de producto).
 
 ## Cómo editar el contenido
 
-Todo lo que cambia seguido está en **`js/script.js`**, al inicio del archivo:
+Todo lo que cambia seguido está en **`js/products.js`**, al inicio del archivo:
 
-- **`WHATSAPP_NUMBER`**: número de WhatsApp Business, solo dígitos con indicativo de país (ej. Colombia: `"573001234567"`). Actualmente tiene un número de ejemplo — cámbialo apenas lo definas.
-- **`PRODUCTS`**: lista del catálogo. Cada producto tiene `name`, `category` (`"camiseta"` o `"buso"`), `price` (en pesos, solo número), `image` (ruta a la foto) y `tag` (opcional, ej. `"Nuevo"`).
+- **`WHATSAPP_NUMBER`**: número de WhatsApp Business, solo dígitos con indicativo de país (ej. Colombia: `"573001234567"`).
+- **`PRODUCTS`**: lista del catálogo. Cada producto tiene `id` (único), `name`, `category` (`"camiseta"`, `"buso"` o `"pantaloneta"`), `price` (en pesos, solo número), `image` (ruta a la foto) y `tag` (opcional, ej. `"Nuevo"`).
 
 Para agregar fotos reales:
 1. Guarda las fotos en la carpeta `images/` (ej. `images/camiseta-esencia.jpg`).
@@ -23,19 +33,14 @@ Abre el archivo `index.html` directamente en el navegador, o usa un servidor loc
 npx serve .
 ```
 
-## Cómo publicarla gratis (dominio propio opcional)
+## Publicación
 
-**Opción recomendada: Vercel o Netlify (gratis)**
-
-1. Sube esta carpeta a un repositorio de GitHub.
-2. Entra a [vercel.com](https://vercel.com) o [netlify.com](https://netlify.com), conecta tu cuenta de GitHub.
-3. Selecciona el repositorio — no requiere configuración (es HTML/CSS/JS puro).
-4. En minutos tendrás una URL pública (ej. `mmn-clothing.vercel.app`).
-5. Si compras un dominio (ej. `mmnclothing.com`), lo conectas desde el panel de Vercel/Netlify en "Domains".
+El sitio está publicado en Vercel y conectado a este repositorio de GitHub: cada
+`git push` a la rama `main` genera una nueva implementación automáticamente.
 
 ## Próximos pasos sugeridos
 
-- [ ] Definir y actualizar el número de WhatsApp Business.
+- [x] Definir y actualizar el número de WhatsApp Business.
 - [ ] Reemplazar los productos de ejemplo con fotos y precios reales.
 - [ ] Revisar textos (About, envíos, políticas de cambio/devolución).
-- [ ] Comprar un dominio si se desea (ej. en Namecheap, GoDaddy o directamente en Vercel).
+- [ ] Comprar un dominio propio si se desea (ej. en Namecheap, GoDaddy o directamente en Vercel).
