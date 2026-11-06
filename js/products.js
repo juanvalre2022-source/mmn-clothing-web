@@ -109,7 +109,7 @@ function createProductCardElement(product) {
 function createSlideElement(product) {
   const slide = document.createElement("a");
   slide.className = "slide-card";
-  slide.href = `catalogo.html?product=${product.id}`;
+  slide.href = `/catalogo?product=${product.id}`;
 
   const imageHtml = product.image
     ? `<img src="${product.image}" alt="${product.name}">`
