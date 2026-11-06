@@ -10,7 +10,10 @@ function renderCatalog(filter) {
     ? PRODUCTS.filter(p => p.category === filter)
     : PRODUCTS;
 
-  items.forEach(product => grid.appendChild(createProductCardElement(product)));
+  const sort = document.getElementById("catalogSort").value;
+  const sorted = sort === "default" ? items : [...items].sort((a, b) => sort === "asc" ? a.price - b.price : b.price - a.price);
+  document.getElementById("catalogCount").textContent = `${sorted.length} producto${sorted.length === 1 ? "" : "s"}`;
+  sorted.forEach(product => grid.appendChild(createProductCardElement(product)));
 }
 
 function setupTabs() {
@@ -41,6 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupTabs();
   renderCatalog(initialFilter);
+  document.getElementById("catalogSort").addEventListener("change", () => {
+    const active = document.querySelector(".filter-btn.is-active");
+    renderCatalog(active ? active.dataset.filter : "todos");
+  });
 
   const activeBtn = document.querySelector(`.filter-btn[data-filter="${initialFilter}"]`);
   if (activeBtn) {
