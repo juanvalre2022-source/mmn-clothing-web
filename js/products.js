@@ -69,7 +69,7 @@ function createProductCardElement(product) {
     ? `<span class="product-card__tag">${product.tag}</span>`
     : "";
 
-  const tallaOptions = TALLAS.map(t => `<option value="${t}">${t}</option>`).join("");
+  const tallaOptions = TALLAS.map(t => `<button type="button" class="size-pill" data-talla="${t}">${t}</button>`).join("");
 
   card.innerHTML = `
     <div class="product-card__img">
@@ -81,15 +81,24 @@ function createProductCardElement(product) {
       <span class="product-card__name">${product.name}</span>
       <span class="product-card__price">${formatCOP(product.price)}</span>
       <div class="product-card__row">
-        <select class="product-card__talla" aria-label="Talla">${tallaOptions}</select>
+        <div class="size-pills" role="group" aria-label="Talla">${tallaOptions}</div>
         <button class="btn btn--primary btn--sm product-card__add">Agregar</button>
       </div>
     </div>
   `;
 
+  let selected = "";
+  const pills = card.querySelectorAll(".size-pill");
+  const hint = card.querySelector(".size-pills");
+  pills.forEach(p => p.addEventListener("click", () => {
+    selected = p.dataset.talla;
+    pills.forEach(x => x.classList.toggle("is-selected", x === p));
+    hint.classList.remove("is-missing");
+  }));
+
   card.querySelector(".product-card__add").addEventListener("click", () => {
-    const talla = card.querySelector(".product-card__talla").value;
-    addToCart(product, talla, 1);
+    if (!selected) { hint.classList.add("is-missing"); return; }
+    addToCart(product, selected, 1);
   });
 
   return card;
