@@ -16,12 +16,14 @@ function renderSlider() {
   nextBtn.addEventListener("click", () => track.scrollBy({ left: scrollStep, behavior: "smooth" }));
   prevBtn.addEventListener("click", () => track.scrollBy({ left: -scrollStep, behavior: "smooth" }));
 
-  let autoplay = setInterval(() => {
+  const play = () => setInterval(() => {
     const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
     track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + scrollStep, behavior: "smooth" });
   }, 4000);
 
+  let autoplay = play();
   track.addEventListener("mouseenter", () => clearInterval(autoplay));
+  track.addEventListener("mouseleave", () => { clearInterval(autoplay); autoplay = play(); });
 }
 
 function renderCategoryPreviews() {
