@@ -23,7 +23,7 @@ function setupTabs() {
       buttons.forEach(b => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       renderCatalog(btn.dataset.filter);
-      history.replaceState(null, "", btn.dataset.filter === "todos" ? "catalogo.html" : `catalogo.html?cat=${btn.dataset.filter}`);
+      history.replaceState(null, "", btn.dataset.filter === "todos" ? "/catalogo" : `/catalogo?cat=${btn.dataset.filter}`);
     });
   });
 }
